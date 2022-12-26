@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log("INIT");
     this.users$ = this.userService.getSimilarUsers(null);
   }
 
