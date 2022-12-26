@@ -1,3 +1,18 @@
 <div class="content" role="main">
-    <span> Hello {{ title }}</span>
+
+  <mat-form-field appearance="fill">
+    <mat-select [(value)]="selected">
+      <mat-option>Select</mat-option>
+      <mat-option value="Favorite color">Favorite color</mat-option>
+      <mat-option value="Policy number">Policy number</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+      <input matInput #input>
+  </mat-form-field>
+
 </div>
+
+
+
