@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { BucketService } from 'src/app/services/bucket.service';
-import { Fruit } from '../../../constants/fruit';
-import { IFruit } from '../../../interfaces/fruit.interface';
-import { ANIMATIONS } from '../../../constants/animations';
+import { Fruit } from 'src/app/constants/fruit';
+import { IFruit } from 'src/app/interfaces/fruit.interface';
+import { ANIMATIONS } from 'src/app/constants/animations';
+import {AppState} from 'src/app/store/app.reducer';
+import {Store} from '@ngrx/store';
+import {addItemToBucket, removeItemToBucket} from '../../../store/app.actions';
 @Component({
   selector: 'app-bucket',
   templateUrl: './bucket.component.html',
@@ -14,7 +17,10 @@ export class BucketComponent implements OnInit {
   bucket$: Observable<IFruit[]>;
   selectedFruit: Fruit = '' as null;
   fruits: string[] = Object.values(Fruit);
-  constructor(private bucketService: BucketService) {}
+  constructor(
+    private bucketService: BucketService,
+    private store: Store<AppState>
+  ) {}
 
   ngOnInit(): void {
     this.bucket$ = this.bucketService.bucket$;
@@ -27,8 +33,10 @@ export class BucketComponent implements OnInit {
       name: this.selectedFruit,
     };
     this.bucketService.addItem(newItem);
+    this.store.dispatch(addItemToBucket(newItem));
   }
   deleteFromBucket(fruit: IFruit) {
     this.bucketService.removeItem(fruit);
+    this.store.dispatch(removeItemToBucket(fruit));
   }
 }
