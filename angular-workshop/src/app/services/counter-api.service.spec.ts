@@ -7,6 +7,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { CounterApiService } from './counter-api.service';
 
+
 const counter = 5;
 const expectedURL = `/assets/counter.json?counter=${counter}`;
 const serverResponse = {};
