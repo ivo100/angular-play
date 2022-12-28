@@ -3,13 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-workshop": {
+    "cy-heroes": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -17,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-workshop",
+            "outputPath": "dist/cy-heroes",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-workshop:build:production"
+              "browserTarget": "cy-heroes:build:production"
             },
             "development": {
-              "browserTarget": "angular-workshop:build:development"
+              "browserTarget": "cy-heroes:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-workshop:build"
+            "browserTarget": "cy-heroes:build"
           }
         },
         "test": {
@@ -99,33 +95,27 @@
             "scripts": []
           }
         },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
-          }
-        },
+            "devServerTarget": "cy-heroes:serve",
+            "watch": true,
+            "headless": false
+          },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-workshop:serve:production"
+              "devServerTarget": "cy-heroes:serve:production"
             }
           }
-        },
-        "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {}
         },
         "cypress-run": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "angular-workshop:serve"
+            "devServerTarget": "cy-heroes:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-workshop:serve:production"
+              "devServerTarget": "cy-heroes:serve:production"
             }
           }
         },
@@ -135,14 +125,25 @@
             "watch": true,
             "headless": false
           }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "cy-heroes:serve",
+            "watch": true,
+            "headless": false,
+            "testingType": "component"
+          },
+          "configurations": {
+            "development": {
+              "devServerTarget": "cy-heroes:serve:development"
+            }
+          }
         }
       }
     }
   },
   "cli": {
-    "schematicCollections": [
-      "@angular-eslint/schematics"
-    ],
     "analytics": false
   }
 }
