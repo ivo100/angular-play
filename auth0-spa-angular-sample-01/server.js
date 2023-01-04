@@ -31,4 +31,4 @@ app.use(
 
 app.use(express.static(join(__dirname, 'dist')));
 
-app.listen(port, () => console.log(`App server listening on port ${port}`));
+app.listen(port, () => console.log(`1.0 App server listening on port ${port}`));
