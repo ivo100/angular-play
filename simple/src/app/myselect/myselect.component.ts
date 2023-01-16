@@ -11,7 +11,7 @@ import {MatInput} from "@angular/material/input";
 export class MyselectComponent implements OnInit {
 
   //@ViewChild('input') myinput: MatInput;
-  @ViewChild(MatInput) myinput;
+  //@ViewChild(MatInput) myinput;
 
   constructor() { }
 
@@ -39,7 +39,7 @@ export class MyselectComponent implements OnInit {
     console.log("set selected", val);
     this._disabled = val ? "false" : "true";
     this._selected = val;
-    this.myinput.focus();
+    //this.myinput.focus();
   }
 
 }
