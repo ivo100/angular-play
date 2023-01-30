@@ -12,6 +12,7 @@ export class MyselectComponent implements OnInit {
 
   //@ViewChild('input') myinput: MatInput;
   //@ViewChild(MatInput) myinput;
+  private input: any;
 
   constructor() { }
 
@@ -19,8 +20,13 @@ export class MyselectComponent implements OnInit {
   }
 
   title = 'simple';
+  field = '';
   private _selected = '';
   private _disabled = 'true';
+
+  @ViewChild('myInput') myInput: MatInput | undefined;
+
+  //myInput: MatInput
 
   @Input()
   get disabled (): string {
@@ -39,7 +45,14 @@ export class MyselectComponent implements OnInit {
     console.log("set selected", val);
     this._disabled = val ? "false" : "true";
     this._selected = val;
-    //this.myinput.focus();
+    this.field = "";
   }
 
+  updateField(evt: any) {
+    //console.log("changed", evt);
+    this.field = evt;
+    //console.log("field", this.field);
+    // @ts-ignore
+    //this.myInput.focus();
+  }
 }

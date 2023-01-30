@@ -1,13 +1,21 @@
-<div class="verify_dd">
-  <mat-form-field appearance="fill">
-    <mat-select [(value)]="selected">
-      <mat-option>Select</mat-option>
-      <mat-option value="Favorite color">Favorite color</mat-option>
-      <mat-option value="Policy number">Policy number</mat-option>
-    </mat-select>
-  </mat-form-field>
 
-  <mat-form-field appearance="outline" color="Accent" >
-    <input disabled={{disabled}} matInput #input >
-  </mat-form-field>
+<mat-card>
+  <mat-card-content>
+
+    <mat-form-field appearance="fill">
+      <mat-select [(value)]="selected" (selectionChange)="updateField($event.value)">
+        <mat-option>Select</mat-option>
+        <mat-option value="Favorite color">Favorite color</mat-option>
+        <mat-option value="Policy number">Policy number</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="Accent" #myInput>
+      <input matInput disabled={{disabled}}  placeholder="{{field}}" >
+    </mat-form-field>
+
+  </mat-card-content>
+</mat-card>
+
+<div class="verify_dd">
 </div>

@@ -6,6 +6,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MyselectComponent } from './myselect/myselect.component';
+import {MatCardModule} from "@angular/material/card";
+import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +18,8 @@ import { MyselectComponent } from './myselect/myselect.component';
     BrowserAnimationsModule,
     MatInputModule,
     MatSelectModule,
+    MatCardModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
