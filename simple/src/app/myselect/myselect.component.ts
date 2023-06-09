@@ -6,16 +6,23 @@ import {Component, Input, OnInit} from '@angular/core';
   templateUrl: './myselect.component.html',
   styleUrls: ['./myselect.component.css']
 })
-
-
 export class MyselectComponent implements OnInit {
 
   //@ViewChild('input') myinput: MatInput;
   //@ViewChild(MatInput) myinput;
 
-  constructor() { }
+  constructor() {
+  }
+
+  // https://npm.io/package/@enonic/fnv-plus
 
   ngOnInit(): void {
+    console.log('=== ngOnInit');
+    console.log('hashFnv32a(foo)', hashFnv32a('foo'));
+    console.log('hashFnv32a(46b471d8-f4ed-4726-8f26-c69dfdbdee25)', hashFnv32a('46b471d8-f4ed-4726-8f26-c69dfdbdee25'));
+    console.log('hashFnv32a(46b471d8-f4ee-4726-8f26-c69dfdbdee25)', hashFnv32a('46b471d8-f4ee-4726-8f26-c69dfdbdee25'));
+
+
   }
 
   title = 'simple';
@@ -42,4 +49,15 @@ export class MyselectComponent implements OnInit {
     //this.myinput.focus();
   }
 
+}
+
+function hashFnv32a(str: string, seed?: number): string {
+  let hval = seed === undefined ? 0x811c9dc5 : seed;
+
+  for (let i = 0, l = str.length; i < l; i++) {
+    hval ^= str.charCodeAt(i);
+    hval += (hval << 1) + (hval << 4) + (hval << 7) + (hval << 8) + (hval << 24);
+  }
+
+  return ("0000000" + (hval >>> 0).toString(16)).substr(-8);
 }
