@@ -1,5 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
 //import {MatInput} from "@angular/material/input";
+//import fnvplus from 'fnv-plus';
+
+
+// var fnv = require('fnv-plus'),
+//   ahash64 = fnv.hash(astring, 64);
+//
+// import sampleModule = require('modulename');
+// import express = require('express');
+// import * as express from 'express';
 
 @Component({
   selector: 'app-myselect',
@@ -18,11 +27,15 @@ export class MyselectComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('=== ngOnInit');
-    console.log('hashFnv32a(foo)', hashFnv32a('foo'));
-    console.log('hashFnv32a(46b471d8-f4ed-4726-8f26-c69dfdbdee25)', hashFnv32a('46b471d8-f4ed-4726-8f26-c69dfdbdee25'));
-    console.log('hashFnv32a(46b471d8-f4ee-4726-8f26-c69dfdbdee25)', hashFnv32a('46b471d8-f4ee-4726-8f26-c69dfdbdee25'));
+    let s = 'foo';
+    let h = '';
+    h = fnvplus.fast1a64(s);
+    // Calculate FNV-1a 64bit hash
+    //returns hex string
+    console.log(s, h);
 
-
+    // console.log('hashFnv32a(46b471d8-f4ed-4726-8f26-c69dfdbdee25)', hashFnv32a('46b471d8-f4ed-4726-8f26-c69dfdbdee25'));
+    // console.log('hashFnv32a(46b471d8-f4ee-4726-8f26-c69dfdbdee25)', hashFnv32a('46b471d8-f4ee-4726-8f26-c69dfdbdee25'));
   }
 
   title = 'simple';

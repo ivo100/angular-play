@@ -1,0 +1,23 @@
+
+https://npm.io/package/@enonic/fnv-plus
+
+
+npm install fnv-plus --save
+
+
+fnv.fast1a64(string)
+Calculate FNV-1a 64bit hash
+returns hex string
+
+
+You can add "allowSyntheticDefaultImports": true to the compilerOptions.
+import * as express from 'express';
+import express from 'express';
+
+https://www.typescriptlang.org/tsconfig#allowSyntheticDefaultImports
+
+
+https://definitelytyped.github.io/
+
+https://github.com/DefinitelyTyped/DefinitelyTyped
+
